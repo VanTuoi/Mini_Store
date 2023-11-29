@@ -4,6 +4,9 @@
  */
 package com.mycompany.manage_store;
 
+import Controller.Controller;
+import Model.Product;
+import java.util.ArrayList;
 import static javax.management.Query.value;
 import javax.swing.UIManager;
 
@@ -16,6 +19,8 @@ public class MyApp extends javax.swing.JFrame {
     /**
      * Creates new form MyApp
      */
+    Controller Controller = new Controller();
+    
     public MyApp() {
         initComponents();
         this.jPanel1.setVisible(true);
@@ -178,7 +183,38 @@ public class MyApp extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
        
-           
+           ArrayList<Product> array = Controller.readFromFile("output1.txt");
+           Product[] list_product = array.toArray(new Product[0]);
+           Object[][] result = new Object[list_product.length+1][7];
+           for (int i = 0; i < list_product.length; i++) {
+               if (list_product[i] != null){
+        // Lấy thông tin từ mỗi đối tượng Product
+                    String tenSanPham = list_product[i].getTenSanPham();
+                    String maSanPham = list_product[i].getMaSanPham();
+                    int soLuong = list_product[i].getSoLuong();
+                    int donGia = list_product[i].getDonGia();
+                    String donViTinh = list_product[i].getDonViTinh();
+                    String ngaySanXuat = list_product[i].getNgaySanXuat();
+                    String hanSuDung = list_product[i].getHanSuDung();
+
+                    // Đặt giá trị vào mảng Object[][]
+                    result[i][0] = tenSanPham;
+                    result[i][1] = maSanPham;
+                    result[i][2] = soLuong;
+                    result[i][3] = donGia;
+                    result[i][4] = donViTinh;
+                    result[i][5] = ngaySanXuat;
+                    result[i][6] = hanSuDung;
+                    System.out.println("thành công");
+               }
+            }
+          jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            result,
+            new String [] {
+                "Mã SP", "Tên SP", "Số lượng còn","Đơn giá", "Đơn vị tính","Ngày sản xuất","Hạn sử dụng"
+            }
+        ));
+          
         this.jPanel1.setVisible(false);
           this.jPanel2.setVisible(true);
         // TODO add your handling code here:
