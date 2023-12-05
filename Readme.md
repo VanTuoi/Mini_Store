@@ -1,4 +1,4 @@
-# Code chương trình được lưu ở nhánh Dev
+# Code chương trình được lưu ở nhánh Main
 
 # Phần mềm quản lý cửa hàng tạp hóa
 - Phần mềm được xây dựng để giúp các cửa hàng nhỏ có thể quản lý số lượng sản phẩm hàng hóa đang có trong kho, tra cứu chính xác giá trị của sản phẩm thông qua mã vạch, ID sản phẩm,... ngoài ra phần mềm còn hỗ trợ in hóa đơn cho khác hàng
